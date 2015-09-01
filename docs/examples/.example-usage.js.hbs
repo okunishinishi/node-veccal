@@ -1,0 +1,11 @@
+var veccal = require('veccal');
+
+{{#each examples}}
+//------------------------
+// {{name}}
+//------------------------
+{{#each values}}
+console.log(veccal.{{../name}}({{{args}}})); //-> {{result}}
+{{/each}}
+
+{{/each}}

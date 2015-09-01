@@ -1,0 +1,18 @@
+{
+  "name": "node-veccal",
+  "description": "Basic vector calculation functions.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/okunishinishi/node-veccal",
+  "authors": [
+    "Taka Okunishi"
+  ],
+  "main": "browser/node-veccal.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

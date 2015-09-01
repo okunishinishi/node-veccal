@@ -1,0 +1,41 @@
+/**
+ * Bud file for example usage.
+ */
+
+"use strict";
+
+var veccal = require('../../lib'),
+    util = require('util');
+
+module.exports = {
+    force: true,
+    mode: '444',
+    data: {
+        get examples() {
+            return [
+            ].map(function (name) {
+                    var func = veccal[name];
+                    return {
+                        name: name,
+                        values: [
+                        ].map(function (args) {
+                                return {
+                                    args: args.map(function(val){
+                                        if(Array.isArray(val)){
+                                            return util.format('[%s]', val.join(', '));
+                                        }
+                                        return val;
+                                    }).join(', '),
+                                    result: func.apply(func, args)
+                                }
+                            })
+                    }
+                })
+
+        }
+    }
+};
+
+if (!module.parent) {
+    require('coz').render(__filename);
+}
