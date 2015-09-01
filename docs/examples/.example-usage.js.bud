@@ -7,28 +7,59 @@
 var veccal = require('../../lib'),
     util = require('util');
 
+function _formatValue(val) {
+    if (Array.isArray(val)) {
+        return util.format('[%s]', val.join(', '));
+    }
+    return val;
+}
+
+function _example(args, func) {
+    return {
+        args: args.map(function (val) {
+            return _formatValue(val);
+        }).join(', '),
+        result: _formatValue(func.apply(func, args))
+    }
+}
+
 module.exports = {
     force: true,
     mode: '444',
     data: {
         get examples() {
             return [
-            ].map(function (name) {
-                    var func = veccal[name];
+                {
+                    name: 'add',
+                    args: [
+                        [[1, 2, 3], [2, 4, 8]]
+                    ]
+                },
+                {
+                    name: 'multiply',
+                    args: [
+                        [[1, 2, 3], [2, 4, 8]]
+                    ]
+                },
+                {
+                    name: 'scale',
+                    args: [
+                        [[1, 2, 3], 2]
+                    ]
+                },
+                {
+                    name: 'size',
+                    args: [
+                        [[3, 4, 5]]
+                    ]
+                }
+            ].map(function (data) {
+                    var name = data.name;
                     return {
                         name: name,
-                        values: [
-                        ].map(function (args) {
-                                return {
-                                    args: args.map(function(val){
-                                        if(Array.isArray(val)){
-                                            return util.format('[%s]', val.join(', '));
-                                        }
-                                        return val;
-                                    }).join(', '),
-                                    result: func.apply(func, args)
-                                }
-                            })
+                        values: data.args.map(function (args) {
+                            return _example(args, veccal[name]);
+                        })
                     }
                 })
 
