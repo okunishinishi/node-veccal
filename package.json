@@ -1,5 +1,5 @@
 {
-  "name": "node-veccal",
+  "name": "veccal",
   "version": "1.0.0",
   "description": "Basic vector calculation functions.",
   "main": "lib",

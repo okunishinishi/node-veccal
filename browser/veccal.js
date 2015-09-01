@@ -31,7 +31,7 @@ module.exports = add;
 },{"./validate/validate_same_length":4}],3:[function(require,module,exports){
 /**
  * Basic vector calculation functions.
- * @module node-veccal
+ * @module veccal
  */
 
 "use strict";
