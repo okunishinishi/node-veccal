@@ -15,6 +15,7 @@ exports.tearDown = function (done) {
 
 exports['Multiply'] = function (test) {
     test.deepEqual(multiply([3, 2, 1], [7, 6, 5]), [21, 12, 5]);
+    test.deepEqual(multiply([3, 2, 1], [7, 6, 5], [0, 1, 2]), [0, 12, 10]);
 
     test.throws(function () {
         multiply([1, 2], [4]);

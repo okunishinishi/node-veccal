@@ -92,7 +92,11 @@ API
 
 | Signature | Description |
 | --------- | ----------- |
-| .add(vec1, vec2) | Add vectors. |
+| .add(vec1, vec2, ...) | Add multiple vectors. |
+| .multiply(vec1, vec2, ...) | Multiply multiple vectors. |
+| .sive(vec) | Get size for a vector. |
+| .scale(vec, rate) | Change size for a vector. |
+| .normalize(vec) | Normalize a vector. |
 
 <!-- Section from "docs/readme/03.API.md.hbs" End -->
 

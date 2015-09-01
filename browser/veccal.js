@@ -27,7 +27,7 @@ function _operate(vector1, vector2, operator) {
 }
 
 module.exports = _operate;
-},{"./validate/validate_same_length":8}],3:[function(require,module,exports){
+},{"./validate/validate_same_length":9}],3:[function(require,module,exports){
 /**
  * Add vectors.
  * @memberof module:veccal/lib
@@ -47,7 +47,12 @@ function _addOperation(val1, val2) {
 }
 /** @lends add */
 function add(vector1, vector2) {
-    return _operate(vector1, vector2, _addOperation);
+    var result = vector1;
+    var len = arguments.length;
+    for (var i = 1; i < len; i++) {
+        result = _operate(result, arguments[i], _addOperation);
+    }
+    return result;
 }
 
 module.exports = add;
@@ -62,10 +67,11 @@ module.exports = add;
 module.exports = {
     get add() { return require('./add'); },
     get multiply() { return require('./multiply'); },
+    get normalize() { return require('./normalize'); },
     get scale() { return require('./scale'); },
     get size() { return require('./size'); }
 };
-},{"./add":3,"./multiply":5,"./scale":6,"./size":7}],5:[function(require,module,exports){
+},{"./add":3,"./multiply":5,"./normalize":6,"./scale":7,"./size":8}],5:[function(require,module,exports){
 /**
  * Multiply vectors
  * @memberof module:veccal/lib
@@ -85,14 +91,41 @@ function _multiplyOperation(val1, val2) {
 
 /** @lends multiply */
 function multiply(vector1, vector2) {
-    return _operate(vector1, vector2, _multiplyOperation);
+    var result = vector1;
+    var len = arguments.length;
+    for (var i = 1; i < len; i++) {
+        result = _operate(result, arguments[i], _multiplyOperation);
+    }
+    return result;
 }
 
 module.exports = multiply;
 
 },{"./_operate":2}],6:[function(require,module,exports){
 /**
- * Add vectors.
+ * Normalize vectors.
+ * @memberof module:veccal/lib
+ * @function normalize
+ * @param {number[]} vector - Vector to normalize.
+ * @returns {number[]} - Normaized vector.
+ *
+ */
+
+"use strict";
+
+var scale = require('./scale'),
+    size = require('./size');
+
+/** @lends normalize */
+function normalize(vector) {
+    var rate = 1 / size(vector);
+    return scale(vector, rate);
+}
+
+module.exports = normalize;
+},{"./scale":7,"./size":8}],7:[function(require,module,exports){
+/**
+ * Scale vectors.
  * @memberof module:veccal/lib
  * @function scale
  * @param {number[]} vector - Vector to scale.
@@ -103,6 +136,7 @@ module.exports = multiply;
 
 "use strict";
 
+/** @lends scale */
 function scale(vector, rate) {
     var result = [];
     for (var i = 0, len = vector.length; i < len; i++) {
@@ -113,7 +147,7 @@ function scale(vector, rate) {
 }
 
 module.exports = scale;
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * Get size of vector
  * @memberof module:veccal/lib
@@ -135,7 +169,7 @@ function size(vector) {
 
 module.exports = size;
 
-},{"./multiply":5,"numcal":10}],8:[function(require,module,exports){
+},{"./multiply":5,"numcal":11}],9:[function(require,module,exports){
 /**
  * Check if same length
  * @function validateSameLength
@@ -161,7 +195,7 @@ function validateSameLength(vector1, vector2) {
 }
 
 module.exports = validateSameLength;
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
  * Get average value.
  * @function ave
@@ -194,7 +228,7 @@ function ave() {
 module.exports = ave;
 
 
-},{"./sum":13}],10:[function(require,module,exports){
+},{"./sum":14}],11:[function(require,module,exports){
 /**
  * Basic numeric calculation functions.
  * @module numcal
@@ -208,7 +242,7 @@ module.exports = {
     get min() { return require('./min'); },
     get sum() { return require('./sum'); }
 };
-},{"./ave":9,"./max":11,"./min":12,"./sum":13}],11:[function(require,module,exports){
+},{"./ave":10,"./max":12,"./min":13,"./sum":14}],12:[function(require,module,exports){
 /**
  * Find max value.
  * @function max
@@ -239,7 +273,7 @@ function max() {
 module.exports = max;
 
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * Find min value.
  * @function min
@@ -270,7 +304,7 @@ function min() {
 module.exports = min;
 
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /**
  * Get sum value.
  * @function sum
