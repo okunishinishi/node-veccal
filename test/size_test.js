@@ -15,7 +15,6 @@ exports.tearDown = function(done) {
 
 exports['Size'] = function(test){
     test.deepEqual(size([3, 4]), 5);
-
     test.done();
 };
 

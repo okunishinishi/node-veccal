@@ -27,7 +27,7 @@ function _operate(vector1, vector2, operator) {
 }
 
 module.exports = _operate;
-},{"./validate/validate_same_length":9}],3:[function(require,module,exports){
+},{"./validate/validate_same_length":11}],3:[function(require,module,exports){
 /**
  * Add vectors.
  * @memberof module:veccal/lib
@@ -68,10 +68,12 @@ module.exports = {
     get add() { return require('./add'); },
     get multiply() { return require('./multiply'); },
     get normalize() { return require('./normalize'); },
+    get revert() { return require('./revert'); },
     get scale() { return require('./scale'); },
-    get size() { return require('./size'); }
+    get size() { return require('./size'); },
+    get subtract() { return require('./subtract'); }
 };
-},{"./add":3,"./multiply":5,"./normalize":6,"./scale":7,"./size":8}],5:[function(require,module,exports){
+},{"./add":3,"./multiply":5,"./normalize":6,"./revert":7,"./scale":8,"./size":9,"./subtract":10}],5:[function(require,module,exports){
 /**
  * Multiply vectors
  * @memberof module:veccal/lib
@@ -107,7 +109,8 @@ module.exports = multiply;
  * @memberof module:veccal/lib
  * @function normalize
  * @param {number[]} vector - Vector to normalize.
- * @returns {number[]} - Normaized vector.
+ * @param {number} [size=1] - Size to fit.
+ * @returns {number[]} - Normalized vector.
  *
  */
 
@@ -117,13 +120,33 @@ var scale = require('./scale'),
     size = require('./size');
 
 /** @lends normalize */
-function normalize(vector) {
-    var rate = 1 / size(vector);
+function normalize(vector, normalizeSize) {
+    var rate = (normalizeSize || 1) / size(vector);
     return scale(vector, rate);
 }
 
 module.exports = normalize;
-},{"./scale":7,"./size":8}],7:[function(require,module,exports){
+},{"./scale":8,"./size":9}],7:[function(require,module,exports){
+/**
+ * Revert a vector.
+ * @memberof module:veccal/lib
+ * @function revert
+ * @param {number[]} - Vector to revert.
+ * @returns {number[]} - Reversed vector.
+ */
+
+"use strict";
+
+var scale = require('./scale');
+
+/** @lends revert */
+function revert(vector) {
+    return scale(vector, -1);
+}
+
+module.exports = revert;
+
+},{"./scale":8}],8:[function(require,module,exports){
 /**
  * Scale vectors.
  * @memberof module:veccal/lib
@@ -147,7 +170,7 @@ function scale(vector, rate) {
 }
 
 module.exports = scale;
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * Get size of vector
  * @memberof module:veccal/lib
@@ -169,7 +192,36 @@ function size(vector) {
 
 module.exports = size;
 
-},{"./multiply":5,"numcal":11}],9:[function(require,module,exports){
+},{"./multiply":5,"numcal":13}],10:[function(require,module,exports){
+/**
+ * Subtract vectors.
+ * @memberof module:veccal/lib
+ * @function subtract
+ * @param {...number[]} vector - Vectors to subtract.
+ * @throws Length mismatch error.
+ * @returns {number[]} - Subtracted vector.
+ *
+ */
+
+"use strict";
+
+var _operate = require('./_operate');
+
+function _subtractOperation(val1, val2) {
+    return val1 - val2;
+}
+/** @lends subtract */
+function subtract(vector1, vector2) {
+    var result = vector1;
+    var len = arguments.length;
+    for (var i = 1; i < len; i++) {
+        result = _operate(result, arguments[i], _subtractOperation);
+    }
+    return result;
+}
+
+module.exports = subtract;
+},{"./_operate":2}],11:[function(require,module,exports){
 /**
  * Check if same length
  * @function validateSameLength
@@ -195,7 +247,7 @@ function validateSameLength(vector1, vector2) {
 }
 
 module.exports = validateSameLength;
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * Get average value.
  * @function ave
@@ -228,7 +280,7 @@ function ave() {
 module.exports = ave;
 
 
-},{"./sum":14}],11:[function(require,module,exports){
+},{"./sum":16}],13:[function(require,module,exports){
 /**
  * Basic numeric calculation functions.
  * @module numcal
@@ -242,7 +294,7 @@ module.exports = {
     get min() { return require('./min'); },
     get sum() { return require('./sum'); }
 };
-},{"./ave":10,"./max":12,"./min":13,"./sum":14}],12:[function(require,module,exports){
+},{"./ave":12,"./max":14,"./min":15,"./sum":16}],14:[function(require,module,exports){
 /**
  * Find max value.
  * @function max
@@ -273,7 +325,7 @@ function max() {
 module.exports = max;
 
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 /**
  * Find min value.
  * @function min
@@ -304,7 +356,7 @@ function min() {
 module.exports = min;
 
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 /**
  * Get sum value.
  * @function sum

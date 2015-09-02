@@ -3,8 +3,11 @@ API
 
 | Signature | Description |
 | --------- | ----------- |
-| .add(vec1, vec2, ...) | Add multiple vectors. |
-| .multiply(vec1, vec2, ...) | Multiply multiple vectors. |
-| .sive(vec) | Get size for a vector. |
-| .scale(vec, rate) | Change size for a vector. |
-| .normalize(vec) | Normalize a vector. |
+| .add(vec1, vec2, ...) -> vec | Add multiple vectors. |
+| .subtract(vec1, vec2, ...) -> vec | Subtract multiple vectors. |
+| .multiply(vec1, vec2, ...) -> vec | Multiply multiple vectors. |
+| .size(vec) -> size | Get size for a vector. |
+| .scale(vec, rate) -> vec | Change size for a vector. |
+| .normalize(vec) -> vec | Normalize a vector. |
+| .normalize(vec, size) -> vec | Normalize a vector to fit size. |
+| .revert(vec) -> vec | Revert a vector. |
