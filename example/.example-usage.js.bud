@@ -4,7 +4,7 @@
 
 "use strict";
 
-var veccal = require('../../lib'),
+var veccal = require('../lib'),
     util = require('util');
 
 function _formatValue(val) {

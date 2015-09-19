@@ -39,20 +39,20 @@ Basic vector calculation functions.
 <!-- Sections Start -->
 <a name="sections"></a>
 
-<!-- Section from "docs/readme/01.Installation.md.hbs" Start -->
+<!-- Section from "doc/readme/01.Installation.md.hbs" Start -->
 
-<a name="section-docs-readme-01-installation-md"></a>
+<a name="section-doc-readme-01-installation-md"></a>
 Installation
 -----
 
 ```bash
 npm install veccal --save
 ```
-<!-- Section from "docs/readme/01.Installation.md.hbs" End -->
+<!-- Section from "doc/readme/01.Installation.md.hbs" End -->
 
-<!-- Section from "docs/readme/02.Usage.md.hbs" Start -->
+<!-- Section from "doc/readme/02.Usage.md.hbs" Start -->
 
-<a name="section-docs-readme-02-usage-md"></a>
+<a name="section-doc-readme-02-usage-md"></a>
 Usage
 -----
 
@@ -103,11 +103,11 @@ console.log(veccal.revert([3, 4, 5])); //-> [-3, -4, -5]
 
 ````
 
-<!-- Section from "docs/readme/02.Usage.md.hbs" End -->
+<!-- Section from "doc/readme/02.Usage.md.hbs" End -->
 
-<!-- Section from "docs/readme/03.API.md.hbs" Start -->
+<!-- Section from "doc/readme/03.API.md.hbs" Start -->
 
-<a name="section-docs-readme-03-a-p-i-md"></a>
+<a name="section-doc-readme-03-a-p-i-md"></a>
 API
 ---
 
@@ -122,7 +122,7 @@ API
 | .normalize(vec, size) -> vec | Normalize a vector to fit size. |
 | .revert(vec) -> vec | Revert a vector. |
 
-<!-- Section from "docs/readme/03.API.md.hbs" End -->
+<!-- Section from "doc/readme/03.API.md.hbs" End -->
 
 
 <!-- Sections Start -->

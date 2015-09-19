@@ -9,10 +9,7 @@
     "cover": "./ci/cover.js",
     "report": "./ci/report.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/okunishinishi/node-veccal.git"
-  },
+  "repository": "okunishinishi/node-veccal",
   "keyword": [
     "vector",
     "math",
