@@ -19,7 +19,7 @@ module.exports = apeTmpl.readmeMdBud({
         npm: true,
         bower:true
     },
-    links: null
+    links: require('./doc/links')
 });
 
 if (!module.parent) {

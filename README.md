@@ -138,3 +138,13 @@ This software is released under the [MIT License](https://github.com/okunishinis
 <!-- LICENSE End -->
 
 
+<!-- Links Start -->
+<a name="links"></a>
+
+Links
+------
+
++ [numcal](https://github.com/okunishinishi/node-numcal)
++ [rangecal](https://github.com/okunishinishi/node-rangecal)
+
+<!-- Links End -->
