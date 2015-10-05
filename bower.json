@@ -1,7 +1,7 @@
 {
   "name": "veccal",
   "description": "Basic vector calculation functions.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "homepage": "https://github.com/okunishinishi/node-veccal",
   "authors": [
     "Taka Okunishi"
