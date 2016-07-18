@@ -1,13 +1,12 @@
 {
   "name": "veccal",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Basic vector calculation functions.",
   "main": "lib",
+  "browser": "sims/browser",
   "scripts": {
-    "build": "./ci/build.js",
     "test": "./ci/test.js",
-    "cover": "./ci/cover.js",
-    "report": "./ci/report.js"
+    "prepublish": "./ci/build.js && ./ci/browser.js"
   },
   "repository": "okunishinishi/node-veccal",
   "keyword": [
@@ -24,20 +23,23 @@
     "url": "https://github.com/okunishinishi/node-veccal/issues"
   },
   "homepage": "https://github.com/okunishinishi/node-veccal",
-  "devDependencies": {
-    "ape-compiling": "*",
-    "ape-covering": "*",
-    "ape-releasing": "*",
-    "ape-reporting": "*",
-    "ape-tasking": "*",
-    "ape-testing": "*",
-    "ape-tmpl": "*",
-    "ape-updating": "*",
-    "coz": "*",
-    "coz-tmpl": "*",
-    "extend": "*"
-  },
   "dependencies": {
-    "numcal": "^1.1.3"
+    "numcal": "^3.1.1"
+  },
+  "devDependencies": {
+    "ababel": "^1.0.5",
+    "ape-covering": "^3.0.3",
+    "ape-releasing": "^4.0.2",
+    "ape-reporting": "^3.0.1",
+    "ape-tasking": "^4.0.3",
+    "ape-testing": "^4.0.1",
+    "ape-tmpl": "^5.0.13",
+    "ape-updating": "^4.0.4",
+    "babel-preset-es2015": "^6.9.0",
+    "coz": "^6.0.7"
+  },
+  "engines": {
+    "node": ">=6",
+    "npm": ">=3"
   }
 }

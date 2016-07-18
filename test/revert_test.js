@@ -1,23 +1,17 @@
 /**
  * Test case for revert.
- * Runs with nodeunit.
+ * Runs with mocha.
  */
+'use strict'
 
-var revert = require('../lib/revert.js');
+const assert = require('assert')
+const revert = require('../lib/revert.js')
 
-exports.setUp = function (done) {
-    done();
-};
-
-exports.tearDown = function (done) {
-    done();
-};
-
-exports['Revert'] = function (test) {
-    test.deepEqual(
-        revert([1, 2, 3]),
-        [-1, -2, -3]
-    );
-    test.done();
-};
+it('Revert', (done) => {
+  assert.deepEqual(
+    revert([ 1, 2, 3 ]),
+    [ -1, -2, -3 ]
+  )
+  done()
+})
 

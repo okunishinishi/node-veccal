@@ -1,22 +1,16 @@
 /**
  * Test case for scale.
- * Runs with nodeunit.
+ * Runs with mocha.
  */
+'use strict'
 
-var scale = require('../lib/scale.js');
+const assert = require('assert')
+const scale = require('../lib/scale.js')
 
-exports.setUp = function (done) {
-    done();
-};
-
-exports.tearDown = function (done) {
-    done();
-};
-
-exports['Scale'] = function (test) {
-    test.deepEqual(scale([1, 2, 3], 2), [
-        2, 4, 6
-    ]);
-    test.done();
-};
+it('Scale', (done) => {
+  assert.deepEqual(scale([ 1, 2, 3 ], 2), [
+    2, 4, 6
+  ])
+  done()
+})
 

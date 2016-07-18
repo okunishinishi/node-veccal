@@ -1,20 +1,14 @@
 /**
  * Test case for size.
- * Runs with nodeunit.
+ * Runs with mocha.
  */
+'use strict'
 
-var size = require('../lib/size.js');
+const assert = require('assert')
+const size = require('../lib/size.js')
 
-exports.setUp = function(done) {
-    done();
-};
-
-exports.tearDown = function(done) {
-    done();
-};
-
-exports['Size'] = function(test){
-    test.deepEqual(size([3, 4]), 5);
-    test.done();
-};
+it('Size', (done) => {
+  assert.deepEqual(size([ 3, 4 ]), 5)
+  done()
+})
 

@@ -2,95 +2,95 @@
  * Bud file for example usage.
  */
 
-"use strict";
+"use strict"
 
-var veccal = require('../lib'),
-    util = require('util');
+const veccal = require('../lib')
+const util = require('util')
 
-function _formatValue(val) {
-    if (Array.isArray(val)) {
-        return util.format('[%s]', val.join(', '));
-    }
-    return val;
+function _formatValue (val) {
+  if (Array.isArray(val)) {
+    return util.format('[%s]', val.join(', '))
+  }
+  return val
 }
 
-function _example(args, func) {
-    return {
-        args: args.map(function (val) {
-            return _formatValue(val);
-        }).join(', '),
-        result: _formatValue(func.apply(func, args))
-    }
+function _example (args, func) {
+  return {
+    args: args.map(function (val) {
+      return _formatValue(val)
+    }).join(', '),
+    result: _formatValue(func.apply(func, args))
+  }
 }
 
 module.exports = {
-    force: true,
-    mode: '444',
-    data: {
-        get examples() {
-            return [
-                {
-                    name: 'add',
-                    args: [
-                        [[1, 2, 3], [2, 4, 8]],
-                        [[1, 2, 3], [2, 4, 8], [0, 1, 0]]
-                    ]
-                },
-                {
-                    name: 'subtract',
-                    args: [
-                        [[1, 2, 3], [2, 4, 8]],
-                        [[1, 2, 3], [2, 4, 8], [0, 1, 0]]
-                    ]
-                },
-                {
-                    name: 'multiply',
-                    args: [
-                        [[1, 2, 3], [2, 4, 8]],
-                        [[1, 2, 3], [2, 4, 8], [0, 1, 0]]
-                    ]
-                },
-                {
-                    name: 'scale',
-                    args: [
-                        [[1, 2, 3], 2],
-                        [[1, 2, 3], -4]
-                    ]
-                },
-                {
-                    name: 'size',
-                    args: [
-                        [[3, 4, 5]],
-                        [[1, 0, 0]]
-                    ]
-                },
-                {
-                    name: 'normalize',
-                    args: [
-                        [[3, 4, 5]],
-                        [[3, 4, 5], 2]
-                    ]
-                },
-                {
-                    name: 'revert',
-                    args: [
-                        [[3, 4, 5]]
-                    ]
-                }
-            ].map(function (data) {
-                    var name = data.name;
-                    return {
-                        name: name,
-                        values: data.args.map(function (args) {
-                            return _example(args, veccal[name]);
-                        })
-                    }
-                })
-
+  force: true,
+  mode: '444',
+  data: {
+    get examples () {
+      return [
+        {
+          name: 'add',
+          args: [
+            [ [ 1, 2, 3 ], [ 2, 4, 8 ] ],
+            [ [ 1, 2, 3 ], [ 2, 4, 8 ], [ 0, 1, 0 ] ]
+          ]
+        },
+        {
+          name: 'subtract',
+          args: [
+            [ [ 1, 2, 3 ], [ 2, 4, 8 ] ],
+            [ [ 1, 2, 3 ], [ 2, 4, 8 ], [ 0, 1, 0 ] ]
+          ]
+        },
+        {
+          name: 'multiply',
+          args: [
+            [ [ 1, 2, 3 ], [ 2, 4, 8 ] ],
+            [ [ 1, 2, 3 ], [ 2, 4, 8 ], [ 0, 1, 0 ] ]
+          ]
+        },
+        {
+          name: 'scale',
+          args: [
+            [ [ 1, 2, 3 ], 2 ],
+            [ [ 1, 2, 3 ], -4 ]
+          ]
+        },
+        {
+          name: 'size',
+          args: [
+            [ [ 3, 4, 5 ] ],
+            [ [ 1, 0, 0 ] ]
+          ]
+        },
+        {
+          name: 'normalize',
+          args: [
+            [ [ 3, 4, 5 ] ],
+            [ [ 3, 4, 5 ], 2 ]
+          ]
+        },
+        {
+          name: 'revert',
+          args: [
+            [ [ 3, 4, 5 ] ]
+          ]
         }
+      ].map(function (data) {
+        var name = data.name
+        return {
+          name: name,
+          values: data.args.map(function (args) {
+            return _example(args, veccal[ name ])
+          })
+        }
+      })
+
     }
-};
+  }
+}
 
 if (!module.parent) {
-    require('coz').render(__filename);
+  require('coz').render(__filename)
 }

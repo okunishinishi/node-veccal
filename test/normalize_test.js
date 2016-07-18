@@ -1,27 +1,21 @@
 /**
  * Test case for normalize.
- * Runs with nodeunit.
+ * Runs with mocha.
  */
+'use strict'
 
-var normalize = require('../lib/normalize.js');
+const assert = require('assert')
+const normalize = require('../lib/normalize.js')
 
-exports.setUp = function (done) {
-    done();
-};
-
-exports.tearDown = function (done) {
-    done();
-};
-
-exports['Normalize'] = function (test) {
-    test.deepEqual(
+it('Normalize', (done) => {
+    assert.deepEqual(
         normalize([1, 2, 2]),
         [1 / 3, 2 / 3, 2 / 3]
-    );
-    test.deepEqual(
+    )
+    assert.deepEqual(
         normalize([1, 2, 2], 3),
         [1, 2, 2]
-    );
-    test.done();
-};
+    )
+    done()
+})
 
